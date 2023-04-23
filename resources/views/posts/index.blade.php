@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    @include('posts.partials.menu', ['active' => 'all'])
     @foreach ($posts as $post)
         {{-- <div {{ $loop->even ? 'style=background-color:gray;' : '' }}> --}}
             <div  @style([
