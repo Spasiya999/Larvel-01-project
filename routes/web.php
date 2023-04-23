@@ -37,6 +37,7 @@ Route::get('/posts', function(){
     $posts = [
         ['id' => 1, 'title' => 'post 1', 'content' => 'content 1'],
         ['id' => 2, 'title' => 'post 2', 'content' => 'content 2'],
+        ['id' => 3, 'title' => 'post 3', 'content' => 'content 3'],
         ['id' => 4, 'title' => 'post 4', 'content' => 'content 4'],
         ['id' => 5, 'title' => 'post 5', 'content' => 'content 5'],
         ['id' => 6, 'title' => 'post 6', 'content' => 'content 6'],
@@ -50,7 +51,7 @@ Route::get('/post/{id?}', function($id = 0){
     {
         return redirect()->route('posts.index');
     }
-    return '<h1>Post '.$id. '</h1>';
+    return view('posts.show', ['post' => $id]);
 })->name('posts.show');
 
 
