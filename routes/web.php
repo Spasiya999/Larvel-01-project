@@ -26,32 +26,34 @@ Route::get('/', function () {
     return view('home.index');
 })->name('home.index');
 
-
 //about index view
 Route::get('/about', function(){
     return '<h1>About</h1>';
 });
 
+
 //index view
-Route::get('/posts', function(){
-    $posts = [
-        ['id' => 1, 'title' => 'post 1', 'content' => 'content 1'],
-        ['id' => 2, 'title' => 'post 2', 'content' => 'content 2'],
-        ['id' => 3, 'title' => 'post 3', 'content' => 'content 3'],
-        ['id' => 4, 'title' => 'post 4', 'content' => 'content 4'],
-        ['id' => 5, 'title' => 'post 5', 'content' => 'content 5'],
-        ['id' => 6, 'title' => 'post 6', 'content' => 'content 6'],
-    ];
+$posts = [
+    ['id' => 1, 'title' => 'post 1', 'content' => 'content 1'],
+    ['id' => 2, 'title' => 'post 2', 'content' => 'content 2'],
+    ['id' => 3, 'title' => 'post 3', 'content' => 'content 3'],
+    ['id' => 4, 'title' => 'post 4', 'content' => 'content 4'],
+    ['id' => 5, 'title' => 'post 5', 'content' => 'content 5'],
+    ['id' => 6, 'title' => 'post 6', 'content' => 'content 6'],
+];
+
+Route::get('/posts', function() use ($posts){
+
     return view('posts.index', ['posts' => $posts]);
 })->name('posts.index');
 
 //single post view
-Route::get('/post/{id?}', function($id = 0){
+Route::get('/post/{id?}', function($id = 0) use ($posts) {
     if($id == 0)
     {
         return redirect()->route('posts.index');
     }
-    return view('posts.show', ['post' => $id]);
+    return view('posts.show', ['post' => $posts[$id-1]]);
 })->name('posts.show');
 
 
@@ -59,3 +61,8 @@ Route::get('/post/{id?}', function($id = 0){
 Route::get('/post/{id}/edit', function($id){
     return '<h1>Post '.$id. ' Edit</h1>';
 });
+
+//creat post index
+Route::get('/post/create', function(){
+    return '<h1>Post Create</h1>';
+})->name('posts.create');
