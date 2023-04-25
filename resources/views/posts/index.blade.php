@@ -10,21 +10,9 @@
 
 <body>
     @include('posts.partials.menu', ['active' => 'all'])
+
     @foreach ($posts as $post)
-        {{-- <div {{ $loop->even ? 'style=background-color:gray;' : '' }}> --}}
-            <div  @style([
-                'background-color: gray' => $loop->odd {{-- $loop->even --}},
-                'font-weight: bold',
-                'padding: 10px',
-            ])>
-            <h3>{{ $post['title'] }}</h3>
-            <p> {{ $post['content'] }} </p>
-            <?php 
-            // echo htmlspecialchars($post['id']) 
-            ?>
-            {{ $post['id'] }}. <a href="{{route('posts.show', $post['id'])}}">Read more</a>
-            <hr>
-        </div>
+        <x-post :post="$post" :loop="$loop" />
     @endforeach
 
 </body>

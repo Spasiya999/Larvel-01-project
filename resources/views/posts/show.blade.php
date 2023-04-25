@@ -7,9 +7,9 @@
   <title>{{ $post['title'] }}</title>
 </head>
 <body>
-  @include('posts.partials.menu', ['active' => 'show'] )
-  <h1>{{ $post['title'] }}</h1>
-  <p>{{$post['content']}}</p>
+  @include('posts.partials.menu' , ['active' => 'show'] )
+    <h1>{{$post['title']}}</h1>
+    <p>{!!$post['content']!!}</p>
   {{-- <p>{ !!$post['content']!! }</p> html tag remove code --}} 
 </body>
 </html>
