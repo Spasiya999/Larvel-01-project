@@ -10,6 +10,6 @@
   @include('posts.partials.menu' , ['active' => 'show'] )
     <h1>{{$post['title']}}</h1>
     <p>{!!$post['content']!!}</p>
-  {{-- <p>{ !!$post['content']!! }</p> html tag remove code --}} 
+  {{-- <p>{ !!$post['content']!! }</p> html tag remove code --}}
 </body>
 </html>
